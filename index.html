@@ -446,12 +446,15 @@
       flex: 1;
       min-height: 0;
       display: grid;
-      grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 10px;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 14px;
     }
 
     .ranking-guide {
-      width: min(980px, 100%);
+      grid-column: 1;
+      grid-row: 1;
+      width: 100%;
       justify-self: start;
       align-self: start;
       background: transparent;
@@ -467,6 +470,8 @@
     }
 
     .ranking-board-wrap {
+      grid-column: 1;
+      grid-row: 2;
       min-height: 0;
       display: flex;
       align-items: center;
@@ -567,38 +572,41 @@
     }
 
     .ranking-pool-panel {
-      width: min(1120px, 100%);
-      justify-self: center;
+      grid-column: 2;
+      grid-row: 1 / 3;
+      min-height: 0;
       background: rgba(255,255,255,.9);
-      border-radius: 22px;
+      border-radius: 24px;
       border: 1px solid rgba(139, 94, 60, .18);
       box-shadow: var(--shadow);
-      padding: 10px 14px;
+      padding: 14px;
       display: flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 104px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
     }
 
     .ranking-pool-title {
-      min-width: 118px;
       color: var(--brand-dark);
       font-weight: 900;
       text-align: center;
       line-height: 1.45;
+      font-size: 1.12rem;
+      flex: 0 0 auto;
     }
 
     .ranking-pool {
       flex: 1;
-      min-height: 78px;
+      min-height: 0;
+      overflow-y: auto;
       border: 2px dashed #ceb89e;
       background: #f4eee8;
       border-radius: 18px;
-      padding: 8px;
+      padding: 10px;
       display: flex;
       flex-wrap: wrap;
-      align-content: center;
-      align-items: center;
+      align-content: flex-start;
+      align-items: flex-start;
       justify-content: center;
       gap: 10px;
       transition: border-color .16s ease, background .16s ease;
@@ -616,8 +624,8 @@
     }
 
     .ranking-pool .symptom-card {
-      width: 62px;
-      height: 78px;
+      width: 88px;
+      height: 112px;
     }
 
 
@@ -630,14 +638,15 @@
       .drop-board { grid-template-columns: 1fr; }
       .pool-panel { min-height: 260px; }
       .card-pool { max-height: 310px; }
-      .ranking-main { grid-template-rows: auto auto auto; }
-      .ranking-guide { width: 100%; padding: 0; }
-      .ranking-board-wrap { overflow-x: auto; justify-content: flex-start; padding-bottom: 6px; }
+      .ranking-main { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+      .ranking-guide { grid-column: 1; grid-row: 1; width: 100%; padding: 0; }
+      .ranking-board-wrap { grid-column: 1; grid-row: 2; overflow-x: auto; justify-content: flex-start; padding-bottom: 6px; }
       .ranking-grid { grid-template-columns: repeat(5, 128px); grid-template-rows: repeat(3, 142px); gap: 10px 12px; }
       .ranking-cell { width: 128px; height: 142px; }
       .ranking-cell .symptom-card { width: 112px; height: 132px; }
-      .ranking-pool-panel { flex-direction: column; align-items: stretch; }
+      .ranking-pool-panel { grid-column: 1; grid-row: 3; max-height: 280px; }
       .ranking-pool-title { min-width: 0; }
+      .ranking-pool .symptom-card { width: 70px; height: 88px; }
     }
   </style>
 </head>
